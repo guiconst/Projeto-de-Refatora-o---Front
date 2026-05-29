@@ -2,437 +2,214 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B7Store</title>
-    <link rel="stylesheet" href="/assets/css/output.css" />
-    <style>
-        /* Banner slide */
-        .banner-slide {
-            display: none;
-        }
-
-        .banner-slide.active {
-            display: block;
-        }
-
-        .banner-dot {
-            transition: all .25s;
-        }
-
-        .banner-dot.active {
-            background-color: #1D4FFE;
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        /* Mobile menu */
-        .header-menu-mobile {
-            display: none;
-        }
-
-        .header-menu-mobile.open {
-            display: flex;
-        }
-
-        /* User menu dropdown */
-        #userMenu {
-            display: none;
-        }
-
-        #userMenu.open {
-            display: block;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-[#F9F9F9] font-poppins">
+<body class="bg-gray-50 text-gray-900 font-sans antialiased">
+    
+    <section class="header-warning bg-black text-white py-2 text-center text-xs tracking-wide uppercase font-semibold">
+        <div class="mobile md:hidden"><span>FRETE GRÁTIS</span> para todo o Nordeste!</div>
+        <div class="desktop hidden md:block"><span>FRETE GRÁTIS</span> para todo o Nordeste nas compras acima de R$ 199,00. <span class="text-yellow-400">APROVEITA!</span></div>
+    </section>
 
-    <!-- Barra de aviso -->
-    <div class="bg-[#1D4FFE] text-white text-xs font-medium text-center py-2 px-4">
-        <span class="hidden md:inline"><b>FRETE GRÁTIS</b> para todo o Nordeste nas compras acima de R$ 199,00.
-            <b>APROVEITA!</b></span>
-        <span class="md:hidden"><b>FRETE GRÁTIS</b> para todo o Nordeste!</span>
-    </div>
-
-    <!-- Header -->
-    <header class="bg-white border-b border-[#D9D9D9] sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center gap-6">
-            <!-- Logo -->
-            <a href="/"><img src="/assets/images/ui/logo-black.png" alt="B7Store" class="h-8 flex-shrink-0" /></a>
-
-            <!-- Nav desktop -->
-            <nav class="hidden md:flex items-center gap-6 flex-1">
-                <a href="/produtos.html?category=camisetas"
-                    class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Camisetas</a>
-                <a href="/produtos.html?category=kits"
-                    class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Kits B7Web</a>
-                <a href="/produtos.html?category=acessorios"
-                    class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Acessórios</a>
-                <a href="/produtos.html?category=eletronicos"
-                    class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Eletrônicos</a>
-            </nav>
-
-            <!-- Search desktop -->
-            <div class="hidden md:flex flex-1 max-w-xs">
-                <input id="searchInput" type="text" placeholder="O que você procura?"
-                    class="w-full border border-[#D9D9D9] rounded px-3 py-2 text-sm outline-none focus:border-[#1D4FFE] transition-colors" />
-            </div>
-
-            <!-- Actions -->
-            <div class="flex items-center gap-2 ml-auto">
-                <!-- User -->
-                <div class="relative">
-                    <button id="userBtn"
-                        class="w-10 h-10 border border-[#D9D9D9] rounded flex items-center justify-center hover:bg-gray-50 transition-colors">
-                        <img src="/assets/images/ui/user-line.png" class="w-5 h-5" alt="Usuário" />
-                    </button>
-                    <div id="userMenu"
-                        class="absolute right-0 top-12 bg-white border border-[#D9D9D9] rounded-lg shadow-lg p-2 w-48 z-50">
-                        <!-- Preenchido via JS -->
-                    </div>
-                </div>
-
-                <!-- Carrinho -->
-                <a href="/checkout.html"
-                    class="w-10 h-10 border border-[#D9D9D9] rounded flex items-center justify-center hover:bg-gray-50 transition-colors relative">
-                    <img src="/assets/images/ui/shopping-bag-4-line.png" class="w-5 h-5" alt="Carrinho" />
-                    <span id="cartBadge"
-                        class="hidden absolute -top-1 -right-1 bg-[#1D4FFE] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="header-main max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="header-left flex items-center gap-8">
+                <a class="logo" href="index.html">
+                    <img src="assets/images/ui/logo-black.png" alt="B7Store" class="h-8 w-auto" />
                 </a>
-
-                <!-- Burger mobile -->
-                <button id="burgerBtn"
-                    class="md:hidden w-10 h-10 border border-[#D9D9D9] rounded flex items-center justify-center">
-                    <img id="burgerIcon" src="/assets/images/ui/menu-line.png" class="w-5 h-5" alt="Menu" />
-                </button>
+                <ul class="hidden md:flex items-center gap-6 font-medium text-gray-600">
+                    <li><a href="produtos.html" class="hover:text-black transition">Camisetas</a></li>
+                    <li><a href="produtos.html" class="hover:text-black transition">Kits B7Web</a></li>
+                    <li><a href="produtos.html" class="hover:text-black transition">Acessórios</a></li>
+                    <li><a href="produtos.html" class="hover:text-black transition">Eletrônicos</a></li>
+                </ul>
+            </div>
+            <div class="header-right flex items-center gap-4">
+                <input class="search hidden sm:block bg-gray-100 border border-transparent rounded-full px-4 py-2 text-sm outline-none focus:bg-white focus:border-gray-300 w-48 transition-all" type="text" placeholder="Pesquisa" />
+                <a href="login.html" class="btn-icon p-2 hover:bg-gray-100 rounded-full transition">
+                    <img src="assets/images/ui/user-line.png" alt="User" class="w-6 h-6" />
+                </a>
+                <a href="checkout.html" class="btn-icon p-2 hover:bg-gray-100 rounded-full transition relative">
+                    <img src="assets/images/ui/shopping-bag-4-line.png" alt="Bag" class="w-6 h-6" />
+                </a>
+                <a class="btn-icon menu-burger md:hidden p-2 hover:bg-gray-100 rounded-full cursor-pointer transition">
+                    <img class="off block" src="assets/images/ui/menu-line.png" alt="Open Menu" class="w-6 h-6" />
+                    <img class="on hidden" src="assets/images/ui/menu-line-white.png" alt="Close Menu" class="w-6 h-6" />
+                </a>
             </div>
         </div>
-
-        <!-- Search mobile -->
-        <div class="md:hidden px-4 pb-3">
-            <input id="searchMobile" type="text" placeholder="O que você procura?"
-                class="w-full border border-[#D9D9D9] rounded px-3 py-2 text-sm outline-none focus:border-[#1D4FFE]" />
+        
+        <div class="header-menu hidden md:hidden border-t border-gray-100 bg-white flex flex-col p-4 space-y-3 font-medium">
+            <a href="produtos.html" class="hover:text-blue-600">Camisetas</a>
+            <a href="produtos.html" class="hover:text-blue-600">Kits B7Web</a>
+            <a href="produtos.html" class="hover:text-blue-600">Acessórios</a>
+            <a href="produtos.html" class="hover:text-blue-600">Eletrônicos</a>
         </div>
-
-        <!-- Nav mobile -->
-        <nav id="mobileMenu" class="header-menu-mobile md:hidden flex-col border-t border-[#D9D9D9] bg-white px-4 pb-4">
-            <a href="/produtos.html?category=camisetas" class="py-2 text-sm border-b border-[#D9D9D9]">Camisetas</a>
-            <a href="/produtos.html?category=kits" class="py-2 text-sm border-b border-[#D9D9D9]">Kits B7Web</a>
-            <a href="/produtos.html?category=acessorios" class="py-2 text-sm border-b border-[#D9D9D9]">Acessórios</a>
-            <a href="/produtos.html?category=eletronicos" class="py-2 text-sm">Eletrônicos</a>
-        </nav>
+        <div class="header-search sm:hidden p-4 border-t border-gray-100 bg-white">
+            <input class="search w-full bg-gray-100 border rounded-lg px-4 py-2 text-sm" type="text" placeholder="O que você procura?" />
+        </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 py-8">
-
-        <!-- Banner -->
-        <section class="relative mb-8 rounded-xl overflow-hidden">
-            <div class="relative">
-                <a href="/produtos.html" class="banner-slide active block">
-                    <img src="/assets/images/banners/banner-1.png" alt="Banner 1" class="w-full h-auto rounded-xl" />
-                </a>
-                <a href="/produtos.html" class="banner-slide block">
-                    <img src="/assets/images/banners/banner-2.png" alt="Banner 2" class="w-full h-auto rounded-xl" />
-                </a>
-                <a href="/produtos.html" class="banner-slide block">
-                    <img src="/assets/images/banners/banner-3.png" alt="Banner 3" class="w-full h-auto rounded-xl" />
-                </a>
-                <a href="/produtos.html" class="banner-slide block">
-                    <img src="/assets/images/banners/banner-4.png" alt="Banner 4" class="w-full h-auto rounded-xl" />
-                </a>
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <section class="banner relative overflow-hidden rounded-2xl bg-gray-200 mb-12 shadow-inner group">
+            <div class="banner-area flex transition-transform duration-500 w-full h-[250px] sm:h-[400px]">
+                <a href="produtos.html" class="active min-w-full"><img src="assets/images/banners/banner-1.png" alt="" class="w-full h-full object-cover" /></a>
+                <a href="produtos.html" class="min-w-full hidden"><img src="assets/images/banners/banner-2.png" alt="" class="w-full h-full object-cover" /></a>
+                <a href="produtos.html" class="min-w-full hidden"><img src="assets/images/banners/banner-3.png" alt="" class="w-full h-full object-cover" /></a>
+                <a href="produtos.html" class="min-w-full hidden"><img src="assets/images/banners/banner-4.png" alt="" class="w-full h-full object-cover" /></a>
             </div>
-            <!-- Dots -->
-            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
-                <button class="banner-dot active h-2 w-2 bg-white/70 rounded-full" data-index="0"></button>
-                <button class="banner-dot h-2 w-2 bg-white/70 rounded-full" data-index="1"></button>
-                <button class="banner-dot h-2 w-2 bg-white/70 rounded-full" data-index="2"></button>
-                <button class="banner-dot h-2 w-2 bg-white/70 rounded-full" data-index="3"></button>
-            </div>
-        </section>
-
-        <!-- Benefícios -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-            <div class="bg-white border border-[#D9D9D9] rounded-xl p-5 flex items-center gap-4">
-                <img src="/assets/images/ui/truck-line.png" class="w-8 h-8" alt="" />
-                <div>
-                    <p class="font-semibold text-sm text-[#1a1a1a]">Frete Grátis</p>
-                    <p class="text-xs text-[#7F7F7F]">Para todo o Nordeste</p>
-                </div>
-            </div>
-            <div class="bg-white border border-[#D9D9D9] rounded-xl p-5 flex items-center gap-4">
-                <img src="/assets/images/ui/discount-percent-line.png" class="w-8 h-8" alt="" />
-                <div>
-                    <p class="font-semibold text-sm text-[#1a1a1a]">Muitas Ofertas</p>
-                    <p class="text-xs text-[#7F7F7F]">Preços imbatíveis</p>
-                </div>
-            </div>
-            <div class="bg-white border border-[#D9D9D9] rounded-xl p-5 flex items-center gap-4">
-                <img src="/assets/images/ui/arrow-left-right-line.png" class="w-8 h-8" alt="" />
-                <div>
-                    <p class="font-semibold text-sm text-[#1a1a1a]">Troca Fácil</p>
-                    <p class="text-xs text-[#7F7F7F]">No período de 30 dias</p>
+            <div class="banner-counter-area absolute bottom-4 left-0 right-0 flex justify-center">
+                <div class="banner-counter flex gap-2 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                    <div class="banner-counter-item w-2.5 h-2.5 rounded-full bg-white transition-all duration-300"></div>
+                    <div class="banner-counter-item w-2.5 h-2.5 rounded-full bg-white/50 transition-all duration-300"></div>
+                    <div class="banner-counter-item w-2.5 h-2.5 rounded-full bg-white/50 transition-all duration-300"></div>
+                    <div class="banner-counter-item w-2.5 h-2.5 rounded-full bg-white/50 transition-all duration-300"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Produtos mais recentes -->
-        <section class="mb-10">
-            <div class="flex items-center justify-between mb-6">
-                <div>
-                    <h2 class="text-xl font-bold text-[#1a1a1a]">Produtos mais recentes</h2>
-                    <p class="text-sm text-[#7F7F7F] mt-0.5">Novidades direto da nossa loja</p>
+        <section class="warnings grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div class="warning flex items-center gap-4 p-6 bg-white border rounded-xl shadow-sm">
+                <div class="warning-icon p-3 bg-gray-100 rounded-lg"><img src="assets/images/ui/truck-line.png" alt="" class="w-6 h-6" /></div>
+                <div class="warning-info">
+                    <div class="warning-title font-bold text-lg">Frete Grátis</div>
+                    <div class="warning-subtitle text-sm text-gray-500">Para todo o Nordeste</div>
                 </div>
-                <a href="/produtos.html" class="text-sm text-[#1D4FFE] hover:underline font-medium">Ver todos →</a>
             </div>
-            <div id="productsGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Preenchido via API -->
-                <div class="col-span-2 md:col-span-4 text-center py-8 text-[#7F7F7F] text-sm">Carregando produtos...
+            <div class="warning flex items-center gap-4 p-6 bg-white border rounded-xl shadow-sm">
+                <div class="warning-icon p-3 bg-gray-100 rounded-lg"><img src="assets/images/ui/discount-percent-line.png" alt="" class="w-6 h-6" /></div>
+                <div class="warning-info">
+                    <div class="warning-title font-bold text-lg">Muitas ofertas</div>
+                    <div class="warning-subtitle text-sm text-gray-500">Ofertas imbatíveis</div>
+                </div>
+            </div>
+            <div class="warning flex items-center gap-4 p-6 bg-white border rounded-xl shadow-sm">
+                <div class="warning-icon p-3 bg-gray-100 rounded-lg"><img src="assets/images/ui/arrow-left-right-line.png" alt="" class="w-6 h-6" /></div>
+                <div class="warning-info">
+                    <div class="warning-title font-bold text-lg">Troca fácil</div>
+                    <div class="warning-subtitle text-sm text-gray-500">No período de 30 dias</div>
                 </div>
             </div>
         </section>
 
+        <section class="product-list mb-16">
+            <h4 class="text-2xl font-bold tracking-tight mb-1">Produtos mais vistos</h4>
+            <h5 class="text-sm text-gray-500 mb-6">Campeões de visualização da nossa loja.</h5>
+            <div class="products-area grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="product-item group bg-white border rounded-xl overflow-hidden relative shadow-sm hover:shadow-md transition">
+                    <a href="product.html" class="block p-4">
+                        <div class="product-photo bg-gray-50 rounded-lg overflow-hidden aspect-square flex items-center justify-center mb-4">
+                            <img src="assets/images/products/camiseta-css.png" alt="" class="w-full h-full object-contain group-hover:scale-105 transition duration-300" />
+                        </div>
+                        <div class="product-name font-semibold text-gray-800 line-clamp-1">Camisa CSS - Azul</div>
+                        <div class="product-price text-xl font-bold text-black mt-1">R$ 59,90</div>
+                        <div class="product-info text-xs font-medium text-emerald-600 mt-1">Pagamento via PIX</div>
+                    </a>
+                    <div class="product-fav absolute top-6 right-6 p-2 bg-white rounded-full shadow-md opacity-90 hover:opacity-100 cursor-pointer">
+                        <img src="assets/images/ui/heart-3-line.png" alt="Favorito" class="w-5 h-5" />
+                    </div>
+                </div>
+                <div class="product-item group bg-white border rounded-xl overflow-hidden relative shadow-sm hover:shadow-md transition">
+                    <a href="product.html" class="block p-4"><div class="product-photo bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-4"><img src="assets/images/products/camiseta-css.png" alt="" class="w-full h-full object-contain" /></div><div class="product-name font-semibold text-gray-800">Camisa CSS - Azul</div><div class="product-price text-xl font-bold mt-1">R$ 59,90</div><div class="product-info text-xs font-medium text-emerald-600 mt-1">Pagamento via PIX</div></a>
+                    <div class="product-fav absolute top-6 right-6 p-2 bg-white rounded-full shadow-md"><img src="assets/images/ui/heart-3-line.png" alt="" class="w-5 h-5"/></div>
+                </div>
+                <div class="product-item group bg-white border rounded-xl overflow-hidden relative shadow-sm hover:shadow-md transition">
+                    <a href="product.html" class="block p-4"><div class="product-photo bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-4"><img src="assets/images/products/camiseta-css.png" alt="" class="w-full h-full object-contain" /></div><div class="product-name font-semibold text-gray-800">Camisa CSS - Azul</div><div class="product-price text-xl font-bold mt-1">R$ 59,90</div><div class="product-info text-xs font-medium text-emerald-600 mt-1">Pagamento via PIX</div></a>
+                    <div class="product-fav absolute top-6 right-6 p-2 bg-white rounded-full shadow-md"><img src="assets/images/ui/heart-3-line.png" alt="" class="w-5 h-5"/></div>
+                </div>
+                <div class="product-item group bg-white border rounded-xl overflow-hidden relative shadow-sm hover:shadow-md transition">
+                    <a href="product.html" class="block p-4"><div class="product-photo bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-4"><img src="assets/images/products/camiseta-css.png" alt="" class="w-full h-full object-contain" /></div><div class="product-name font-semibold text-gray-800">Camisa CSS - Azul</div><div class="product-price text-xl font-bold mt-1">R$ 59,90</div><div class="product-info text-xs font-medium text-emerald-600 mt-1">Pagamento via PIX</div></a>
+                    <div class="product-fav absolute top-6 right-6 p-2 bg-white rounded-full shadow-md"><img src="assets/images/ui/heart-3-line.png" alt="" class="w-5 h-5"/></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-list mb-12">
+            <h4 class="text-2xl font-bold tracking-tight mb-1">Produtos mais vendidos</h4>
+            <h5 class="text-sm text-gray-500 mb-6">Campeões de vendas da nossa loja.</h5>
+            <div class="products-area grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="product-item group bg-white border rounded-xl overflow-hidden relative shadow-sm hover:shadow-md transition">
+                    <a href="product.html" class="block p-4"><div class="product-photo bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-4"><img src="assets/images/products/camiseta-css.png" alt="" class="w-full h-full object-contain" /></div><div class="product-name font-semibold text-gray-800">Camisa CSS - Azul</div><div class="product-price text-xl font-bold mt-1">R$ 59,90</div><div class="product-info text-xs font-medium text-emerald-600 mt-1">Pagamento via PIX</div></a><div class="product-fav absolute top-6 right-6 p-2 bg-white rounded-full shadow-md"><img src="assets/images/ui/heart-3-line.png" alt="" class="w-5 h-5"/></div>
+                </div>
+                <div class="product-item group bg-white border rounded-xl overflow-hidden relative shadow-sm hover:shadow-md transition">
+                    <a href="product.html" class="block p-4"><div class="product-photo bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-4"><img src="assets/images/products/camiseta-css.png" alt="" class="w-full h-full object-contain" /></div><div class="product-name font-semibold text-gray-800">Camisa CSS - Azul</div><div class="product-price text-xl font-bold mt-1">R$ 59,90</div><div class="product-info text-xs font-medium text-emerald-600 mt-1">Pagamento via PIX</div></a><div class="product-fav absolute top-6 right-6 p-2 bg-white rounded-full shadow-md"><img src="assets/images/ui/heart-3-line.png" alt="" class="w-5 h-5"/></div>
+                </div>
+                <div class="product-item group bg-white border rounded-xl overflow-hidden relative shadow-sm hover:shadow-md transition">
+                    <a href="product.html" class="block p-4"><div class="product-photo bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-4"><img src="assets/images/products/camiseta-css.png" alt="" class="w-full h-full object-contain" /></div><div class="product-name font-semibold text-gray-800">Camisa CSS - Azul</div><div class="product-price text-xl font-bold mt-1">R$ 59,90</div><div class="product-info text-xs font-medium text-emerald-600 mt-1">Pagamento via PIX</div></a><div class="product-fav absolute top-6 right-6 p-2 bg-white rounded-full shadow-md"><img src="assets/images/ui/heart-3-line.png" alt="" class="w-5 h-5"/></div>
+                </div>
+                <div class="product-item group bg-white border rounded-xl overflow-hidden relative shadow-sm hover:shadow-md transition">
+                    <a href="product.html" class="block p-4"><div class="product-photo bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-4"><img src="assets/images/products/camiseta-css.png" alt="" class="w-full h-full object-contain" /></div><div class="product-name font-semibold text-gray-800">Camisa CSS - Azul</div><div class="product-price text-xl font-bold mt-1">R$ 59,90</div><div class="product-info text-xs font-medium text-emerald-600 mt-1">Pagamento via PIX</div></a><div class="product-fav absolute top-6 right-6 p-2 bg-white rounded-full shadow-md"><img src="assets/images/ui/heart-3-line.png" alt="" class="w-5 h-5"/></div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Newsletter -->
-    <section class="bg-[#1a1a1a] py-10 px-4">
-        <div class="max-w-2xl mx-auto flex flex-col md:flex-row items-center gap-6">
-            <div class="flex items-center gap-4 flex-1">
-                <img src="/assets/images/ui/mail-send-line.png" class="w-8 h-8 invert" alt="" />
+    <section class="newsletter bg-gray-900 text-white py-12 px-4 mt-20">
+        <div class="news-area max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="news-left flex items-center gap-4">
+                <img src="assets/images/ui/mail-send-line.png" alt="" class="w-10 h-10 invert" />
                 <div>
-                    <h3 class="text-white font-semibold">Fique por dentro das promoções!</h3>
-                    <p class="text-[#7F7F7F] text-sm">Coloque seu e-mail e seja o primeiro a saber</p>
+                    <h3 class="text-xl font-bold">Fique por dentro das promoções!</h3>
+                    <p class="text-sm text-gray-400">Coloque seu e-mail e seja o primeiro a saber</p>
                 </div>
             </div>
-            <div class="flex gap-2 w-full md:w-auto">
-                <input type="email" placeholder="Qual seu e-mail?"
-                    class="flex-1 md:w-64 border border-white/20 bg-white/10 text-white placeholder-white/50 rounded px-4 py-2.5 text-sm outline-none focus:border-[#1D4FFE]" />
-                <button
-                    class="bg-[#1D4FFE] text-white px-5 py-2.5 rounded text-sm font-semibold hover:bg-blue-700 transition-colors">Enviar</button>
+            <div class="news-right flex w-full md:w-auto gap-2">
+                <input class="input flex-1 md:w-80 bg-gray-800 text-white placeholder-gray-500 border border-transparent rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-gray-600" type="text" placeholder="Qual seu e-mail?" />
+                <button class="button bg-white text-black font-semibold px-6 py-3 rounded-lg hover:bg-gray-200 transition text-sm">Enviar</button>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-[#1a1a1a] border-t border-white/10">
-        <div class="max-w-6xl mx-auto px-4 py-10">
-            <div class="flex flex-col md:flex-row gap-10 justify-between">
-                <div>
-                    <a href="/"><img src="/assets/images/ui/logo-white.png" alt="B7Store" class="h-8 mb-4" /></a>
-                    <ul class="flex flex-col gap-2">
-                        <li><a href="/produtos.html?category=camisetas"
-                                class="text-[#7F7F7F] text-sm hover:text-white transition-colors">Camisetas</a></li>
-                        <li><a href="/produtos.html?category=kits"
-                                class="text-[#7F7F7F] text-sm hover:text-white transition-colors">Kits B7Web</a></li>
-                        <li><a href="/produtos.html?category=acessorios"
-                                class="text-[#7F7F7F] text-sm hover:text-white transition-colors">Acessórios</a></li>
-                        <li><a href="/produtos.html?category=eletronicos"
-                                class="text-[#7F7F7F] text-sm hover:text-white transition-colors">Eletrônicos</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <p class="text-white text-sm font-semibold mb-3">Precisa de ajuda?</p>
-                    <div class="flex flex-col gap-2">
-                        <a href="mailto:b7store@email.com"
-                            class="flex items-center gap-2 text-[#7F7F7F] text-sm hover:text-white transition-colors">
-                            <img src="/assets/images/ui/mail-line.png" class="w-4 h-4 invert opacity-50" alt="" />
-                            b7store@email.com
-                        </a>
-                        <a href="tel:0000000000"
-                            class="flex items-center gap-2 text-[#7F7F7F] text-sm hover:text-white transition-colors">
-                            <img src="/assets/images/ui/phone-line.png" class="w-4 h-4 invert opacity-50" alt="" />
-                            (00) 00000-0000
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-white text-sm font-semibold mb-3">Redes sociais</p>
-                    <div class="flex gap-2">
-                        <a href="#"
-                            class="w-10 h-10 border border-white/20 rounded flex items-center justify-center hover:border-white/50 transition-colors">
-                            <img src="/assets/images/ui/instagram-line.png" class="w-5 h-5 invert opacity-70"
-                                alt="Instagram" />
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 border border-white/20 rounded flex items-center justify-center hover:border-white/50 transition-colors">
-                            <img src="/assets/images/ui/linkedin-line.png" class="w-5 h-5 invert opacity-70"
-                                alt="LinkedIn" />
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 border border-white/20 rounded flex items-center justify-center hover:border-white/50 transition-colors">
-                            <img src="/assets/images/ui/facebook-line.png" class="w-5 h-5 invert opacity-70"
-                                alt="Facebook" />
-                        </a>
-                    </div>
+    <footer class="bg-black text-gray-400 py-16 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-gray-800 pb-12">
+            <div class="footer-menu flex flex-col gap-6">
+                <a class="logo" href="index.html">
+                    <img src="assets/images/ui/logo-white.png" alt="B7Store" class="h-8 w-auto self-start" />
+                </a>
+                <ul class="flex flex-col gap-3 font-medium text-sm">
+                    <li><a href="produtos.html" class="hover:text-white transition">Camisetas</a></li>
+                    <li><a href="produtos.html" class="hover:text-white transition">Kits B7Web</a></li>
+                    <li><a href="produtos.html" class="hover:text-white transition">Acessórios</a></li>
+                    <li><a href="produtos.html" class="hover:text-white transition">Eletrônicos</a></li>
+                </ul>
+            </div>
+            <div class="footer-contacts flex flex-col gap-4">
+                <div class="footer-title text-white font-bold tracking-wide uppercase text-sm">Precisa de ajuda?</div>
+                <div class="footer-icons flex flex-col gap-3 text-sm">
+                    <a class="btn-icon-text flex items-center gap-2 hover:text-white transition" href="mailto:b7store@email.com">
+                        <img src="assets/images/ui/mail-line.png" alt="" class="w-5 h-5 invert opacity-70" />
+                        <span>b7store@email.com</span>
+                    </a>
+                    <a class="btn-icon-text flex items-center gap-2 hover:text-white transition" href="tel:00000000000">
+                        <img src="assets/images/ui/phone-line.png" alt="" class="w-5 h-5 invert opacity-70" />
+                        <span>(00) 00000-0000</span>
+                    </a>
                 </div>
             </div>
-            <div
-                class="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-[#7F7F7F] text-xs">Se você leu isso aqui, saiba que está no caminho certo! Continue
-                    estudando e você chegará lá...</p>
-                <button onclick="window.scrollTo({top:0,behavior:'smooth'})"
-                    class="w-10 h-10 border border-white/20 rounded flex items-center justify-center hover:border-white/50 transition-colors">
-                    <img src="/assets/images/ui/arrow-up-line.png" class="w-5 h-5 invert opacity-70" alt="Topo" />
-                </button>
+            <div class="social flex flex-col gap-4">
+                <div class="footer-title text-white font-bold tracking-wide uppercase text-sm">Acompanhe nas redes sociais</div>
+                <div class="footer-icons flex gap-3">
+                    <a href="#" class="btn-icon p-2 bg-gray-900 rounded-full hover:bg-gray-800 transition"><img src="assets/images/ui/instagram-line.png" alt="" class="w-5 h-5 invert" /></a>
+                    <a href="#" class="btn-icon p-2 bg-gray-900 rounded-full hover:bg-gray-800 transition"><img src="assets/images/ui/linkedin-line.png" alt="" class="w-5 h-5 invert" /></a>
+                    <a href="#" class="btn-icon p-2 bg-gray-900 rounded-full hover:bg-gray-800 transition"><img src="assets/images/ui/facebook-line.png" alt="" class="w-5 h-5 invert" /></a>
+                    <a href="#" class="btn-icon p-2 bg-gray-900 rounded-full hover:bg-gray-800 transition"><img src="assets/images/ui/twitter-x-fill.png" alt="" class="w-5 h-5 invert" /></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6 pt-8 text-xs text-gray-600">
+            <div class="phrase text-center sm:text-left leading-relaxed">Se você leu isso aqui, saiba que está no caminho certo!<br />Continue estudando e você chegará lá...</div>
+            <div class="btn-icon p-3 bg-gray-900 rounded-full cursor-pointer hover:bg-gray-800 transition text-white">
+                <img src="assets/images/ui/arrow-up-line.png" alt="Scroll Top" class="w-4 h-4 invert" />
             </div>
         </div>
     </footer>
 
-    <script>
-        // ─── Banner ────────────────────────────────────────────────────────────────
-        const slides = document.querySelectorAll('.banner-slide');
-        const dots = document.querySelectorAll('.banner-dot');
-        let current = 0;
-        let timer;
-
-        function showSlide(n) {
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            slides[n].classList.add('active');
-            dots[n].classList.add('active');
-            current = n;
-        }
-
-        function nextSlide() { showSlide((current + 1) % slides.length); }
-
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                showSlide(parseInt(dot.dataset.index));
-                clearInterval(timer);
-                timer = setInterval(nextSlide, 3000);
-            });
-        });
-
-        timer = setInterval(nextSlide, 3000);
-
-        // ─── Mobile burger ─────────────────────────────────────────────────────────
-        document.getElementById('burgerBtn').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.toggle('open');
-        });
-
-        // ─── Search ────────────────────────────────────────────────────────────────
-        function goSearch(val) {
-            if (val.trim()) window.location.href = `/produtos.html?search=${encodeURIComponent(val.trim())}`;
-        }
-        document.getElementById('searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') goSearch(e.target.value); });
-        document.getElementById('searchMobile').addEventListener('keydown', e => { if (e.key === 'Enter') goSearch(e.target.value); });
-
-        // ─── Auth menu ─────────────────────────────────────────────────────────────
-        const userBtn = document.getElementById('userBtn');
-        const userMenu = document.getElementById('userMenu');
-
-        async function loadUserMenu() {
-            try {
-                const res = await fetch('/api/auth/me', { credentials: 'include' });
-                const data = await res.json();
-
-                if (res.ok && data.user) {
-                    const u = data.user;
-                    userMenu.innerHTML = `
-                    <div class="px-3 py-2 border-b border-[#D9D9D9] mb-1">
-                        <p class="text-xs font-semibold text-[#1a1a1a] truncate">${u.name}</p>
-                        <p class="text-xs text-[#7F7F7F] truncate">${u.email}</p>
-                    </div>
-                    ${u.role === 'admin' ? `<a href="/admin/produtos.html" class="flex items-center gap-2 px-3 py-2 text-sm text-[#1a1a1a] hover:bg-gray-50 rounded">⚙️ Painel Admin</a>` : ''}
-                    <button onclick="logout()" class="w-full text-left flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded">Sair</button>`;
-                } else {
-                    userMenu.innerHTML = `
-                    <a href="/login.html"    class="flex items-center gap-2 px-3 py-2 text-sm text-[#1a1a1a] hover:bg-gray-50 rounded">Entrar</a>
-                    <a href="/register.html" class="flex items-center gap-2 px-3 py-2 text-sm text-[#1D4FFE] hover:bg-blue-50 rounded font-medium">Criar conta</a>`;
-                }
-            } catch { /* não logado */ }
-        }
-
-        userBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            userMenu.classList.toggle('open');
-        });
-        document.addEventListener('click', () => userMenu.classList.remove('open'));
-        loadUserMenu();
-
-        async function logout() {
-            await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
-            window.location.reload();
-        }
-
-        // ─── Carrinho (localStorage simples) ──────────────────────────────────────
-        function updateCartBadge() {
-            try {
-                const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-                const total = cart.reduce((s, i) => s + (i.qty || 1), 0);
-                const badge = document.getElementById('cartBadge');
-                if (total > 0) { badge.textContent = total; badge.classList.remove('hidden'); }
-            } catch { }
-        }
-        updateCartBadge();
-
-        // ─── Produtos via API ──────────────────────────────────────────────────────
-        async function loadProducts() {
-            const grid = document.getElementById('productsGrid');
-            try {
-                const res = await fetch('/api/products?limit=8', { credentials: 'include' });
-                const data = await res.json();
-
-                if (!data.products || data.products.length === 0) {
-                    grid.innerHTML = `<div class="col-span-2 md:col-span-4 text-center py-12 text-[#7F7F7F] text-sm">
-                    Nenhum produto encontrado.
-                    <br><a href="/admin/produtos.html" class="text-[#1D4FFE] hover:underline">Cadastrar produtos →</a>
-                </div>`;
-                    return;
-                }
-
-                grid.innerHTML = data.products.map(p => `
-                <div class="bg-white border border-[#D9D9D9] rounded-xl overflow-hidden hover:shadow-md transition-shadow group">
-                    <a href="/product.html?id=${p.id}" class="block">
-                        <div class="aspect-square overflow-hidden bg-[#F9F9F9]">
-                            <img src="${p.image_url || '/assets/images/products/camiseta-css.png'}"
-                                alt="${p.name}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                        </div>
-                        <div class="p-4">
-                            ${p.old_price ? `<span class="text-xs text-white bg-[#1D4FFE] px-2 py-0.5 rounded font-medium">Oferta</span>` : ''}
-                            <p class="text-sm font-semibold text-[#1a1a1a] mt-1 line-clamp-2">${p.name}</p>
-                            ${p.old_price ? `<p class="text-xs text-[#7F7F7F] line-through">R$ ${Number(p.old_price).toFixed(2).replace('.', ',')}</p>` : ''}
-                            <p class="text-base font-bold text-[#1a1a1a]">R$ ${Number(p.price).toFixed(2).replace('.', ',')}</p>
-                            <p class="text-xs text-[#7F7F7F] mt-0.5">Pagamento via PIX</p>
-                        </div>
-                    </a>
-                    <div class="px-4 pb-4">
-                        <button onclick="addToCart('${p.id}','${p.name.replace(/'/g, "\\'")}',${p.price},'${p.image_url || ''}')"
-                            class="w-full bg-[#1D4FFE] text-white text-sm font-semibold py-2 rounded hover:bg-blue-700 transition-colors">
-                            Adicionar ao carrinho
-                        </button>
-                    </div>
-                </div>`).join('');
-            } catch (err) {
-                grid.innerHTML = `<div class="col-span-2 md:col-span-4 text-center py-12 text-[#7F7F7F] text-sm">
-                Erro ao carregar produtos. Servidor offline?
-            </div>`;
-            }
-        }
-
-        function addToCart(id, name, price, image) {
-            try {
-                const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-                const idx = cart.findIndex(i => i.id === id);
-                if (idx >= 0) { cart[idx].qty = (cart[idx].qty || 1) + 1; }
-                else { cart.push({ id, name, price, image, qty: 1 }); }
-                localStorage.setItem('cart', JSON.stringify(cart));
-                updateCartBadge();
-                showToast(`${name} adicionado ao carrinho!`);
-            } catch { }
-        }
-
-        function showToast(msg) {
-            const t = document.createElement('div');
-            t.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#1a1a1a] text-white text-sm px-5 py-3 rounded-full shadow-lg z-50 animate-bounce';
-            t.textContent = msg;
-            document.body.appendChild(t);
-            setTimeout(() => t.remove(), 2500);
-        }
-
-        loadProducts();
-    </script>
+    <script type="text/javascript" src="assets/js/header.js"></script>
+    <script type="text/javascript" src="assets/js/footer.js"></script>
+    <script type="text/javascript" src="assets/js/home.js"></script>
 </body>
-
 </html>
