@@ -1,251 +1,335 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B7Store</title>
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/header.css" />
-    <link rel="stylesheet" href="assets/css/newsletter.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/single-product.css" />
-    <link rel="stylesheet" href="assets/css/product.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produto - B7Store</title>
+    <link rel="stylesheet" href="/css/output.css" />
+    <style>
+        .size-btn.selected { background:#1D4FFE; color:#fff; border-color:#1D4FFE; }
+        #userMenu { display: none; }
+        #userMenu.open { display: block; }
+    </style>
 </head>
 
-<body>
-    <section class="header-warning">
-        <div class="mobile"><span>FRETE GRÁTIS</span> para todo o Nordeste!</div>
-        <div class="desktop"><span>FRETE GRÁTIS</span> para todo o Nordeste nas compras acima de R$ 199,00.
-            <span>APROVEITA!</span>
-        </div>
-    </section>
-    <header>
-        <div class="header-main">
-            <div class="header-left">
-                <a class="logo" href="">
-                    <img src="assets/images/ui/logo-black.png" alt="B7Store" />
-                </a>
-                <ul>
-                    <li><a href="produtos.html">Camisetas</a></li>
-                    <li><a href="produtos.html">Kits B7Web</a></li>
-                    <li><a href="produtos.html">Acessórios</a></li>
-                    <li><a href="produtos.html">Eletrônicos</a></li>
-                </ul>
-            </div>
-            <div class="header-right">
-                <input class="search" type="text" placeholder="Pesquisa" />
-                <a href="login.html" class="btn-icon">
-                    <img src="assets/images/ui/user-line.png" alt="" />
-                </a>
-                <a href="checkout.html" class="btn-icon">
-                    <img src="assets/images/ui/shopping-bag-4-line.png" alt="" />
-                </a>
-                <a class="btn-icon menu-burger">
-                    <img class="off" src="assets/images/ui/menu-line.png" alt="" />
-                    <img class="on" src="assets/images/ui/menu-line-white.png" alt="" />
+<body class="bg-[#F9F9F9] font-poppins">
+
+    <div class="bg-[#1D4FFE] text-white text-xs font-medium text-center py-2 px-4">
+        <span class="hidden md:inline"><b>FRETE GRÁTIS</b> para todo o Nordeste nas compras acima de R$ 199,00.</span>
+        <span class="md:hidden"><b>FRETE GRÁTIS</b> para todo o Nordeste!</span>
+    </div>
+
+    <header class="bg-white border-b border-[#D9D9D9] sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center gap-6">
+            <a href="/"><img src="/assets/images/ui/logo-black.png" alt="B7Store" class="h-8 flex-shrink-0" /></a>
+            <nav class="hidden md:flex items-center gap-6 flex-1">
+                <a href="/produtos.html?category=camisetas"  class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Camisetas</a>
+                <a href="/produtos.html?category=kits"       class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Kits B7Web</a>
+                <a href="/produtos.html?category=acessorios" class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Acessórios</a>
+                <a href="/produtos.html?category=eletronicos" class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Eletrônicos</a>
+            </nav>
+            <div class="flex items-center gap-2 ml-auto">
+                <div class="relative">
+                    <button id="userBtn" class="w-10 h-10 border border-[#D9D9D9] rounded flex items-center justify-center hover:bg-gray-50">
+                        <img src="/assets/images/ui/user-line.png" class="w-5 h-5" alt="Usuário" />
+                    </button>
+                    <div id="userMenu" class="absolute right-0 top-12 bg-white border border-[#D9D9D9] rounded-lg shadow-lg p-2 w-48 z-50"></div>
+                </div>
+                <a href="/checkout.html" class="w-10 h-10 border border-[#D9D9D9] rounded flex items-center justify-center hover:bg-gray-50 relative">
+                    <img src="/assets/images/ui/shopping-bag-4-line.png" class="w-5 h-5" alt="Carrinho" />
+                    <span id="cartBadge" class="hidden absolute -top-1 -right-1 bg-[#1D4FFE] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
                 </a>
             </div>
-        </div>
-        <div class="header-menu">
-            <a href="produtos.html">Camisetas</a>
-            <a href="produtos.html">Kits B7Web</a>
-            <a href="produtos.html">Acessórios</a>
-            <a href="produtos.html">Eletrônicos</a>
-        </div>
-        <div class="header-search">
-            <input class="search" type="text" placeholder="O que você procura?" />
         </div>
     </header>
-    <main>
-        <section class="breadcrumb">Home > Camisetas > Node</section>
 
-        <section class="product">
-            <div class="photo-area">
-                <div class="photo">
-                    <img src="assets/images/products/camiseta-html.png" alt="" />
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- Breadcrumb -->
+        <nav id="breadcrumb" class="text-sm text-[#7F7F7F] mb-6">
+            <a href="/" class="hover:text-[#1D4FFE]">Home</a>
+            <span class="mx-2">›</span>
+            <a href="/produtos.html" class="hover:text-[#1D4FFE]">Produtos</a>
+            <span class="mx-2">›</span>
+            <span id="bcName" class="text-[#1a1a1a]">...</span>
+        </nav>
+
+        <!-- Loading state -->
+        <div id="loadingState" class="text-center py-16 text-[#7F7F7F] text-sm">Carregando produto...</div>
+        <div id="errorState"   class="hidden text-center py-16">
+            <p class="text-[#7F7F7F] text-sm mb-4">Produto não encontrado.</p>
+            <a href="/produtos.html" class="text-[#1D4FFE] hover:underline text-sm">← Voltar para produtos</a>
+        </div>
+
+        <!-- Produto -->
+        <section id="productSection" class="hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+
+                <!-- Foto -->
+                <div class="bg-white border border-[#D9D9D9] rounded-2xl overflow-hidden aspect-square">
+                    <img id="productImage" src="" alt="" class="w-full h-full object-cover" />
+                </div>
+
+                <!-- Info -->
+                <div class="flex flex-col">
+                    <p id="productSku" class="text-xs text-[#7F7F7F] mb-2"></p>
+                    <h1 id="productName" class="text-2xl font-bold text-[#1a1a1a] mb-3"></h1>
+
+                    <!-- Preço -->
+                    <div class="mb-4">
+                        <p id="productOldPrice" class="hidden text-sm text-[#7F7F7F] line-through"></p>
+                        <p id="productPrice"    class="text-3xl font-bold text-[#1a1a1a]"></p>
+                        <p class="text-xs text-[#7F7F7F] mt-1">Pagamento via PIX</p>
+                    </div>
+
+                    <!-- Tamanhos -->
+                    <div id="sizesSection" class="hidden mb-5">
+                        <p class="text-sm font-medium text-[#1a1a1a] mb-2">Selecione o tamanho:</p>
+                        <div id="sizeButtons" class="flex gap-2 flex-wrap"></div>
+                    </div>
+
+                    <!-- Estoque -->
+                    <p id="stockInfo" class="text-xs mb-5"></p>
+
+                    <!-- Botões -->
+                    <div class="flex gap-3 mb-6">
+                        <button id="addCartBtn" onclick="addToCart()"
+                            class="flex-1 bg-[#1D4FFE] text-white font-semibold py-3 rounded hover:bg-blue-700 transition-colors text-sm">
+                            Adicionar à sacola
+                        </button>
+                        <button class="w-11 h-11 border border-[#D9D9D9] rounded flex items-center justify-center hover:bg-gray-50 flex-shrink-0">
+                            <img src="/assets/images/ui/heart-3-line.png" class="w-5 h-5" alt="Favoritar" />
+                        </button>
+                        <button class="w-11 h-11 border border-[#D9D9D9] rounded flex items-center justify-center hover:bg-gray-50 flex-shrink-0">
+                            <img src="/assets/images/ui/share-line.png" class="w-5 h-5" alt="Compartilhar" />
+                        </button>
+                    </div>
+
+                    <!-- Frete -->
+                    <div class="bg-[#F9F9F9] border border-[#D9D9D9] rounded-xl p-4">
+                        <p class="text-sm font-medium text-[#1a1a1a] mb-2">Calcular frete e prazo:</p>
+                        <div class="flex gap-2">
+                            <input type="text" id="cepInput" placeholder="Digite o CEP"
+                                maxlength="9"
+                                class="flex-1 border border-[#D9D9D9] rounded px-3 py-2 text-sm outline-none focus:border-[#1D4FFE]" />
+                            <button onclick="calcFrete()"
+                                class="bg-[#1a1a1a] text-white px-4 py-2 rounded text-sm font-medium hover:bg-gray-800 transition-colors">
+                                Calcular
+                            </button>
+                        </div>
+                        <p id="freteResult" class="text-xs text-[#7F7F7F] mt-2 hidden">✓ Frete grátis para o Nordeste! Outras regiões: prazo estimado de 5-10 dias úteis.</p>
+                    </div>
                 </div>
             </div>
-            <div class="info">
-                <div class="id">CÓD: 0123</div>
-                <div class="name">Camiseta Node JS - Preta</div>
-                <div class="size">
-                    <div>Selecione o tamanho:</div>
-                    <div class="size-buttons">
-                        <div class="btn-icon">P</div>
-                        <div class="btn-icon">M</div>
-                        <div class="btn-icon">G</div>
-                        <div class="btn-icon">GG</div>
-                    </div>
-                </div>
-                <div class="price-from">de <span>R$ 89,99</span> por</div>
-                <div class="price-to">R$ 59,99</div>
-                <div class="payments">Forma de pagamento via PIX</div>
-                <div class="buttons">
-                    <div class="button">Adicionar à sacola</div>
-                    <div class="btn-icon">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                    <div class="btn-icon">
-                        <img src="assets/images/ui/share-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="shipping">
-                    <div>Calcular frete e prazo:</div>
-                    <div class="shipping-input">
-                        <input type="text" class="input" placeholder="Digite aqui o CEP" />
-                        <div class="button">Calcular</div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="description">
-            <div class="desc-header">
-                <div>Informações do produto</div>
-                <div class="btn-icon">
-                    <img src="assets/images/ui/arrow-left-s-line.png" alt="" />
-                </div>
-            </div>
-            <div class="desc-body">....</div>
-        </section>
+            <!-- Descrição -->
+            <section class="bg-white border border-[#D9D9D9] rounded-xl mb-10">
+                <button id="descToggle" onclick="toggleDesc()"
+                    class="w-full flex items-center justify-between px-6 py-4 text-left">
+                    <span class="font-semibold text-[#1a1a1a]">Informações do produto</span>
+                    <svg id="descArrow" class="w-4 h-4 text-[#7F7F7F] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="descBody" class="px-6 pb-5 text-sm text-[#7F7F7F] leading-relaxed border-t border-[#D9D9D9]"></div>
+            </section>
 
-        <section class="related">
-            <div class="related-title">Você também vai gostar.</div>
-            <div class="related-grid">
-
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-
-            </div>
+            <!-- Produtos relacionados -->
+            <section>
+                <h2 class="text-xl font-bold text-[#1a1a1a] mb-5">Você também vai gostar</h2>
+                <div id="relatedGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+            </section>
         </section>
 
     </main>
-    <section class="newsletter">
-        <div class="news-area">
-            <div class="news-left">
-                <img src="assets/images/ui/mail-send-line.png" alt="" />
-                <div>
-                    <h3>Fique por dentro das promoções!</h3>
-                    <p>Coloque seu e-mail e seja o primeiro a saber</p>
-                </div>
-            </div>
-            <div class="news-right">
-                <input class="input" type="text" placeholder="Qual seu e-mail?" />
-                <button class="button">Enviar</button>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="footer-menu">
-            <a class="logo" href="">
-                <img src="assets/images/ui/logo-white.png" alt="B7Store" />
-            </a>
-            <ul>
-                <li><a href="produtos.html">Camisetas</a></li>
-                <li><a href="produtos.html">Kits B7Web</a></li>
-                <li><a href="produtos.html">Acessórios</a></li>
-                <li><a href="produtos.html">Eletrônicos</a></li>
-            </ul>
-        </div>
-        <div class="footer-contacts">
-            <div class="contacts">
-                <div class="footer-title">Precisa de ajuda?</div>
-                <div class="footer-icons">
-                    <a class="btn-icon-text" href="">
-                        <img src="assets/images/ui/mail-line.png" alt="" />
-                        <span>b7store@email.com</span>
-                    </a>
-                    <a class="btn-icon-text" href="">
-                        <img src="assets/images/ui/phone-line.png" alt="" />
-                        <span>(00) 00000-0000</span>
-                    </a>
-                </div>
-            </div>
-            <div class="social">
-                <div class="footer-title">Acompanhe nas redes sociais</div>
-                <div class="footer-icons">
 
-                    <a href="" class="btn-icon">
-                        <img src="assets/images/ui/instagram-line.png" alt="" />
-                    </a>
-
-                    <a href="" class="btn-icon">
-                        <img src="assets/images/ui/linkedin-line.png" alt="" />
-                    </a>
-
-                    <a href="" class="btn-icon">
-                        <img src="assets/images/ui/facebook-line.png" alt="" />
-                    </a>
-
-                    <a href="" class="btn-icon">
-                        <img src="assets/images/ui/twitter-x-fill.png" alt="" />
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="phrase">Se você leu isso aqui, saiba que está no caminho certo!<br />Continue estudando e você
-                chegará lá...</div>
-            <div class="btn-icon">
-                <img src="assets/images/ui/arrow-up-line.png" alt="" />
-            </div>
+    <!-- Footer simples -->
+    <footer class="bg-[#1a1a1a] py-8 px-4 mt-12">
+        <div class="max-w-6xl mx-auto text-center text-[#7F7F7F] text-xs">
+            © 2024 B7Store. Todos os direitos reservados.
         </div>
     </footer>
 
-    <script type="text/javascript" src="assets/js/header.js"></script>
-    <script type="text/javascript" src="assets/js/footer.js"></script>
-    <script type="text/javascript" src="assets/js/product.js"></script>
-</body>
+    <script>
+    let product     = null;
+    let selectedSize = null;
 
+    // Auth menu
+    const userBtn  = document.getElementById('userBtn');
+    const userMenu = document.getElementById('userMenu');
+    userBtn.addEventListener('click', e => { e.stopPropagation(); userMenu.classList.toggle('open'); });
+    document.addEventListener('click', () => userMenu.classList.remove('open'));
+
+    async function loadUserMenu() {
+        try {
+            const res = await fetch('/api/auth/me', { credentials: 'include' });
+            const data = await res.json();
+            if (res.ok && data.user) {
+                userMenu.innerHTML = `
+                    <div class="px-3 py-2 border-b border-[#D9D9D9] mb-1">
+                        <p class="text-xs font-semibold truncate">${data.user.name}</p>
+                    </div>
+                    <button onclick="logout()" class="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded">Sair</button>`;
+            } else {
+                userMenu.innerHTML = `
+                    <a href="/login.html"    class="block px-3 py-2 text-sm text-[#1a1a1a] hover:bg-gray-50 rounded">Entrar</a>
+                    <a href="/register.html" class="block px-3 py-2 text-sm text-[#1D4FFE] font-medium hover:bg-blue-50 rounded">Criar conta</a>`;
+            }
+        } catch {}
+    }
+    loadUserMenu();
+
+    async function logout() {
+        await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+        window.location.href = '/';
+    }
+
+    // Cart badge
+    function updateCartBadge() {
+        try {
+            const cart  = JSON.parse(localStorage.getItem('cart') || '[]');
+            const total = cart.reduce((s, i) => s + (i.qty || 1), 0);
+            const badge = document.getElementById('cartBadge');
+            if (total > 0) { badge.textContent = total; badge.classList.remove('hidden'); }
+        } catch {}
+    }
+    updateCartBadge();
+
+    // Load product
+    async function init() {
+        const id = new URLSearchParams(window.location.search).get('id');
+        if (!id) { showError(); return; }
+
+        try {
+            const res = await fetch(`/api/products/${id}`, { credentials: 'include' });
+            if (!res.ok) { showError(); return; }
+            product = await res.json();
+            renderProduct(product);
+            loadRelated(product.category, product.id);
+        } catch { showError(); }
+    }
+
+    function showError() {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('errorState').classList.remove('hidden');
+    }
+
+    function renderProduct(p) {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('productSection').classList.remove('hidden');
+
+        document.title = `${p.name} - B7Store`;
+        document.getElementById('bcName').textContent = p.name;
+
+        document.getElementById('productImage').src = p.image_url || '/assets/images/products/camiseta-css.png';
+        document.getElementById('productImage').alt = p.name;
+        document.getElementById('productName').textContent = p.name;
+
+        if (p.sku) document.getElementById('productSku').textContent = `CÓD: ${p.sku}`;
+
+        // Preço
+        document.getElementById('productPrice').textContent = `R$ ${Number(p.price).toFixed(2).replace('.',',')}`;
+        if (p.old_price) {
+            const el = document.getElementById('productOldPrice');
+            el.textContent = `de R$ ${Number(p.old_price).toFixed(2).replace('.',',')} por`;
+            el.classList.remove('hidden');
+        }
+
+        // Estoque
+        const stockEl = document.getElementById('stockInfo');
+        if (p.stock > 0) {
+            stockEl.textContent = `✓ ${p.stock} unidade${p.stock !== 1 ? 's' : ''} em estoque`;
+            stockEl.className = 'text-xs mb-5 text-green-600';
+        } else {
+            stockEl.textContent = '✗ Produto sem estoque';
+            stockEl.className = 'text-xs mb-5 text-red-500';
+            document.getElementById('addCartBtn').disabled = true;
+            document.getElementById('addCartBtn').className = 'flex-1 bg-gray-300 text-gray-500 font-semibold py-3 rounded cursor-not-allowed text-sm';
+        }
+
+        // Tamanhos
+        const sizes = p.sizes || [];
+        if (sizes.length > 0) {
+            document.getElementById('sizesSection').classList.remove('hidden');
+            document.getElementById('sizeButtons').innerHTML = sizes.map(s => `
+                <button class="size-btn w-10 h-10 border border-[#D9D9D9] rounded text-sm font-medium hover:border-[#1D4FFE] transition-colors"
+                    onclick="selectSize(this,'${s}')">${s}</button>`).join('');
+        }
+
+        // Descrição
+        const desc = p.description || 'Informações sobre o produto em breve.';
+        document.getElementById('descBody').textContent = desc;
+    }
+
+    function selectSize(btn, size) {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedSize = size;
+    }
+
+    function toggleDesc() {
+        const body  = document.getElementById('descBody');
+        const arrow = document.getElementById('descArrow');
+        const open  = body.style.display !== 'none';
+        body.style.display  = open ? 'none' : 'block';
+        arrow.style.transform = open ? 'rotate(-90deg)' : '';
+    }
+
+    function calcFrete() {
+        const cep = document.getElementById('cepInput').value.replace(/\D/g,'');
+        if (cep.length !== 8) { alert('Digite um CEP válido (8 dígitos).'); return; }
+        document.getElementById('freteResult').classList.remove('hidden');
+    }
+
+    function addToCart() {
+        if (!product) return;
+        const sizes = product.sizes || [];
+        if (sizes.length > 0 && !selectedSize) {
+            alert('Selecione um tamanho antes de adicionar ao carrinho.');
+            return;
+        }
+        try {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const key  = `${product.id}-${selectedSize || ''}`;
+            const idx  = cart.findIndex(i => i.key === key);
+            if (idx >= 0) cart[idx].qty = (cart[idx].qty || 1) + 1;
+            else cart.push({ key, id: product.id, name: product.name, price: product.price, image: product.image_url, size: selectedSize, qty: 1 });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartBadge();
+            const btn = document.getElementById('addCartBtn');
+            const orig = btn.textContent;
+            btn.textContent = '✓ Adicionado!';
+            btn.className = 'flex-1 bg-green-600 text-white font-semibold py-3 rounded text-sm transition-colors';
+            setTimeout(() => {
+                btn.textContent = orig;
+                btn.className = 'flex-1 bg-[#1D4FFE] text-white font-semibold py-3 rounded hover:bg-blue-700 transition-colors text-sm';
+            }, 1500);
+        } catch {}
+    }
+
+    async function loadRelated(category, excludeId) {
+        try {
+            const res  = await fetch(`/api/products?category=${category}&limit=4`, { credentials: 'include' });
+            const data = await res.json();
+            const prods = (data.products || []).filter(p => p.id !== excludeId).slice(0, 4);
+            if (!prods.length) { document.querySelector('section:last-of-type').style.display = 'none'; return; }
+            document.getElementById('relatedGrid').innerHTML = prods.map(p => `
+                <a href="/product.html?id=${p.id}"
+                    class="bg-white border border-[#D9D9D9] rounded-xl overflow-hidden hover:shadow-md transition-shadow group block">
+                    <div class="aspect-square overflow-hidden bg-[#F9F9F9]">
+                        <img src="${p.image_url || '/assets/images/products/camiseta-css.png'}" alt="${p.name}"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div class="p-3">
+                        <p class="text-sm font-semibold text-[#1a1a1a] line-clamp-2">${p.name}</p>
+                        <p class="text-sm font-bold text-[#1a1a1a] mt-1">R$ ${Number(p.price).toFixed(2).replace('.',',')}</p>
+                        <p class="text-xs text-[#7F7F7F]">via PIX</p>
+                    </div>
+                </a>`).join('');
+        } catch {}
+    }
+
+    init();
+    </script>
+</body>
 </html>

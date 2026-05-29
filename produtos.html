@@ -2,368 +2,278 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B7Store</title>
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/header.css" />
-    <link rel="stylesheet" href="assets/css/newsletter.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/single-product.css" />
-    <link rel="stylesheet" href="assets/css/produtos.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos - B7Store</title>
+    <link rel="stylesheet" href="/css/output.css" />
+    <style>
+        #userMenu {
+            display: none;
+        }
+
+        #userMenu.open {
+            display: block;
+        }
+    </style>
 </head>
 
-<body>
-    <section class="header-warning">
-        <div class="mobile"><span>FRETE GRÁTIS</span> para todo o Nordeste!</div>
-        <div class="desktop"><span>FRETE GRÁTIS</span> para todo o Nordeste nas compras acima de R$ 199,00.
-            <span>APROVEITA!</span>
-        </div>
-    </section>
-    <header>
-        <div class="header-main">
-            <div class="header-left">
-                <a class="logo" href="">
-                    <img src="assets/images/ui/logo-black.png" alt="B7Store" />
-                </a>
-                <ul>
-                    <li><a href="produtos.html">Camisetas</a></li>
-                    <li><a href="produtos.html">Kits B7Web</a></li>
-                    <li><a href="produtos.html">Acessórios</a></li>
-                    <li><a href="produtos.html">Eletrônicos</a></li>
-                </ul>
+<body class="bg-[#F9F9F9] font-poppins">
+
+    <!-- Barra de aviso -->
+    <div class="bg-[#1D4FFE] text-white text-xs font-medium text-center py-2 px-4">
+        <span class="hidden md:inline"><b>FRETE GRÁTIS</b> para todo o Nordeste nas compras acima de R$ 199,00.
+            <b>APROVEITA!</b></span>
+        <span class="md:hidden"><b>FRETE GRÁTIS</b> para todo o Nordeste!</span>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white border-b border-[#D9D9D9] sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center gap-6">
+            <a href="/"><img src="/assets/images/ui/logo-black.png" alt="B7Store" class="h-8 flex-shrink-0" /></a>
+            <nav class="hidden md:flex items-center gap-6 flex-1">
+                <a href="/produtos.html?category=camisetas"
+                    class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Camisetas</a>
+                <a href="/produtos.html?category=kits"
+                    class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Kits B7Web</a>
+                <a href="/produtos.html?category=acessorios"
+                    class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Acessórios</a>
+                <a href="/produtos.html?category=eletronicos"
+                    class="text-sm text-[#1a1a1a] hover:text-[#1D4FFE] transition-colors">Eletrônicos</a>
+            </nav>
+            <div class="hidden md:flex flex-1 max-w-xs">
+                <input id="searchInput" type="text" placeholder="O que você procura?"
+                    class="w-full border border-[#D9D9D9] rounded px-3 py-2 text-sm outline-none focus:border-[#1D4FFE] transition-colors" />
             </div>
-            <div class="header-right">
-                <input class="search" type="text" placeholder="Pesquisa" />
-                <a href="login.html" class="btn-icon">
-                    <img src="assets/images/ui/user-line.png" alt="" />
-                </a>
-                <a href="checkout.html" class="btn-icon">
-                    <img src="assets/images/ui/shopping-bag-4-line.png" alt="" />
-                </a>
-                <a class="btn-icon menu-burger">
-                    <img class="off" src="assets/images/ui/menu-line.png" alt="" />
-                    <img class="on" src="assets/images/ui/menu-line-white.png" alt="" />
+            <div class="flex items-center gap-2 ml-auto">
+                <div class="relative">
+                    <button id="userBtn"
+                        class="w-10 h-10 border border-[#D9D9D9] rounded flex items-center justify-center hover:bg-gray-50">
+                        <img src="/assets/images/ui/user-line.png" class="w-5 h-5" alt="Usuário" />
+                    </button>
+                    <div id="userMenu"
+                        class="absolute right-0 top-12 bg-white border border-[#D9D9D9] rounded-lg shadow-lg p-2 w-48 z-50">
+                    </div>
+                </div>
+                <a href="/checkout.html"
+                    class="w-10 h-10 border border-[#D9D9D9] rounded flex items-center justify-center hover:bg-gray-50 relative">
+                    <img src="/assets/images/ui/shopping-bag-4-line.png" class="w-5 h-5" alt="Carrinho" />
+                    <span id="cartBadge"
+                        class="hidden absolute -top-1 -right-1 bg-[#1D4FFE] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
                 </a>
             </div>
-        </div>
-        <div class="header-menu">
-            <a href="produtos.html">Camisetas</a>
-            <a href="produtos.html">Kits B7Web</a>
-            <a href="produtos.html">Acessórios</a>
-            <a href="produtos.html">Eletrônicos</a>
-        </div>
-        <div class="header-search">
-            <input class="search" type="text" placeholder="O que você procura?" />
         </div>
     </header>
-    <main>
-        <section class="breadcrumb">Home > Camisetas</section>
 
-        <section class="info">
-            <div class="product-qt"><span>12</span> Produtos</div>
-            <div class="top-buttons">
-                <div class="top-button" data-name="order">
-                    <div class="top-button-name">Ordenar</div>
-                    <div class="top-button-icon">
-                        <img src="assets/images/ui/arrow-up-down-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="top-button" data-name="filter">
-                    <div class="top-button-name">Filtrar</div>
-                    <div class="top-button-icon">
-                        <img src="assets/images/ui/equalizer-2-line.png" alt="" />
-                    </div>
-                </div>
-            </div>
-            <div class="order-area">
-                <label for="order">Ordenar por</label>
-                <select id="order" name="order">
-                    <option value="price">Por preço</option>
-                    <option value="bestselling">Por mais vendidos</option>
-                    <option value="alpha">Por ordem alfabética</option>
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- Breadcrumb -->
+        <nav class="text-sm text-[#7F7F7F] mb-6">
+            <a href="/" class="hover:text-[#1D4FFE]">Home</a>
+            <span class="mx-2">›</span>
+            <span id="breadcrumbCat" class="text-[#1a1a1a]">Todos os produtos</span>
+        </nav>
+
+        <!-- Filtros e ordenação -->
+        <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between mb-6">
+            <div id="productCount" class="text-sm text-[#7F7F7F]">Carregando...</div>
+            <div class="flex items-center gap-3">
+                <label class="text-sm text-[#7F7F7F]">Ordenar por</label>
+                <select id="orderSelect"
+                    class="border border-[#D9D9D9] rounded px-3 py-2 text-sm outline-none focus:border-[#1D4FFE] bg-white">
+                    <option value="">Mais recentes</option>
+                    <option value="price_asc">Menor preço</option>
+                    <option value="price_desc">Maior preço</option>
+                    <option value="alpha">Alfabético</option>
                 </select>
             </div>
-        </section>
+        </div>
 
-        <section class="products">
-            <div class="filters">
+        <!-- Grid de produtos -->
+        <div id="productsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+            <div class="col-span-2 md:col-span-4 text-center py-12 text-[#7F7F7F] text-sm">Carregando produtos...</div>
+        </div>
 
-                <div class="filter">
-                    <div class="filter-header">
-                        <div class="filter-name">Tecnologia</div>
-                        <img class="filter-icon" src="assets/images/ui/arrow-left-s-line.png" alt="" />
-                    </div>
-                    <div class="filter-body">
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="rn" />
-                            <span>React Native</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="node" />
-                            <span>Node</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="laravel" />
-                            <span>Laravel</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="react" />
-                            <span>React</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="filter">
-                    <div class="filter-header">
-                        <div class="filter-name">Tecnologia</div>
-                        <img class="filter-icon" src="assets/images/ui/arrow-left-s-line.png" alt="" />
-                    </div>
-                    <div class="filter-body">
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="rn" />
-                            <span>React Native</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="node" />
-                            <span>Node</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="laravel" />
-                            <span>Laravel</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="react" />
-                            <span>React</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="filter">
-                    <div class="filter-header">
-                        <div class="filter-name">Tecnologia</div>
-                        <img class="filter-icon" src="assets/images/ui/arrow-left-s-line.png" alt="" />
-                    </div>
-                    <div class="filter-body">
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="rn" />
-                            <span>React Native</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="node" />
-                            <span>Node</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="laravel" />
-                            <span>Laravel</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="tecnologia" value="react" />
-                            <span>React</span>
-                        </label>
-                    </div>
-                </div>
-
-            </div>
-            <div class="grid">
-
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-                <div class="product-item">
-                    <a href="product.html">
-                        <div class="product-photo">
-                            <img src="assets/images/products/camiseta-css.png" alt="" />
-                        </div>
-                        <div class="product-name">Camisa CSS - Azul</div>
-                        <div class="product-price">R$ 59,90</div>
-                        <div class="product-info">Pagamento via PIX</div>
-                    </a>
-                    <div class="product-fav">
-                        <img src="assets/images/ui/heart-3-line.png" alt="" />
-                    </div>
-                </div>
-
-            </div>
-        </section>
+        <!-- Paginação -->
+        <div id="pagination" class="flex items-center justify-center gap-2"></div>
 
     </main>
-    <section class="newsletter">
-        <div class="news-area">
-            <div class="news-left">
-                <img src="assets/images/ui/mail-send-line.png" alt="" />
-                <div>
-                    <h3>Fique por dentro das promoções!</h3>
-                    <p>Coloque seu e-mail e seja o primeiro a saber</p>
-                </div>
-            </div>
-            <div class="news-right">
-                <input class="input" type="text" placeholder="Qual seu e-mail?" />
-                <button class="button">Enviar</button>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="footer-menu">
-            <a class="logo" href="">
-                <img src="assets/images/ui/logo-white.png" alt="B7Store" />
-            </a>
-            <ul>
-                <li><a href="produtos.html">Camisetas</a></li>
-                <li><a href="produtos.html">Kits B7Web</a></li>
-                <li><a href="produtos.html">Acessórios</a></li>
-                <li><a href="produtos.html">Eletrônicos</a></li>
-            </ul>
-        </div>
-        <div class="footer-contacts">
-            <div class="contacts">
-                <div class="footer-title">Precisa de ajuda?</div>
-                <div class="footer-icons">
-                    <a class="btn-icon-text" href="">
-                        <img src="assets/images/ui/mail-line.png" alt="" />
-                        <span>b7store@email.com</span>
-                    </a>
-                    <a class="btn-icon-text" href="">
-                        <img src="assets/images/ui/phone-line.png" alt="" />
-                        <span>(00) 00000-0000</span>
-                    </a>
-                </div>
-            </div>
-            <div class="social">
-                <div class="footer-title">Acompanhe nas redes sociais</div>
-                <div class="footer-icons">
 
-                    <a href="" class="btn-icon">
-                        <img src="assets/images/ui/instagram-line.png" alt="" />
-                    </a>
-
-                    <a href="" class="btn-icon">
-                        <img src="assets/images/ui/linkedin-line.png" alt="" />
-                    </a>
-
-                    <a href="" class="btn-icon">
-                        <img src="assets/images/ui/facebook-line.png" alt="" />
-                    </a>
-
-                    <a href="" class="btn-icon">
-                        <img src="assets/images/ui/twitter-x-fill.png" alt="" />
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="phrase">Se você leu isso aqui, saiba que está no caminho certo!<br />Continue estudando e você
-                chegará lá...</div>
-            <div class="btn-icon">
-                <img src="assets/images/ui/arrow-up-line.png" alt="" />
-            </div>
+    <!-- Footer simplificado -->
+    <footer class="bg-[#1a1a1a] border-t border-white/10 py-8 px-4 mt-12">
+        <div class="max-w-6xl mx-auto text-center text-[#7F7F7F] text-xs">
+            © 2024 B7Store. Todos os direitos reservados.
         </div>
     </footer>
 
-    <script type="text/javascript" src="assets/js/header.js"></script>
-    <script type="text/javascript" src="assets/js/footer.js"></script>
-    <script type="text/javascript" src="assets/js/produtos.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        let currentPage = 1;
+        let currentFilter = {
+            category: params.get('category') || '',
+            search: params.get('search') || '',
+            order: params.get('order') || ''
+        };
+
+        // Breadcrumb
+        const catNames = { camisetas: 'Camisetas', kits: 'Kits B7Web', acessorios: 'Acessórios', eletronicos: 'Eletrônicos' };
+        if (currentFilter.category) {
+            document.getElementById('breadcrumbCat').textContent = catNames[currentFilter.category] || currentFilter.category;
+            document.title = `${catNames[currentFilter.category] || currentFilter.category} - B7Store`;
+        }
+        if (currentFilter.search) {
+            document.getElementById('searchInput') && (document.getElementById('searchInput').value = currentFilter.search);
+        }
+
+        // Search
+        document.getElementById('searchInput')?.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                currentFilter.search = e.target.value;
+                currentPage = 1;
+                loadProducts();
+            }
+        });
+
+        // Order
+        document.getElementById('orderSelect').value = currentFilter.order;
+        document.getElementById('orderSelect').addEventListener('change', e => {
+            currentFilter.order = e.target.value;
+            currentPage = 1;
+            loadProducts();
+        });
+
+        // Auth menu
+        const userBtn = document.getElementById('userBtn');
+        const userMenu = document.getElementById('userMenu');
+        userBtn.addEventListener('click', e => { e.stopPropagation(); userMenu.classList.toggle('open'); });
+        document.addEventListener('click', () => userMenu.classList.remove('open'));
+
+        async function loadUserMenu() {
+            try {
+                const res = await fetch('/api/auth/me', { credentials: 'include' });
+                const data = await res.json();
+                if (res.ok && data.user) {
+                    userMenu.innerHTML = `
+                    <div class="px-3 py-2 border-b border-[#D9D9D9] mb-1">
+                        <p class="text-xs font-semibold text-[#1a1a1a] truncate">${data.user.name}</p>
+                    </div>
+                    ${data.user.role === 'admin' ? `<a href="/admin/produtos.html" class="block px-3 py-2 text-sm text-[#1a1a1a] hover:bg-gray-50 rounded">⚙️ Admin</a>` : ''}
+                    <button onclick="logout()" class="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded">Sair</button>`;
+                } else {
+                    userMenu.innerHTML = `
+                    <a href="/login.html"    class="block px-3 py-2 text-sm text-[#1a1a1a] hover:bg-gray-50 rounded">Entrar</a>
+                    <a href="/register.html" class="block px-3 py-2 text-sm text-[#1D4FFE] hover:bg-blue-50 rounded font-medium">Criar conta</a>`;
+                }
+            } catch { }
+        }
+        loadUserMenu();
+
+        async function logout() {
+            await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+            window.location.href = '/';
+        }
+
+        // Cart badge
+        function updateCartBadge() {
+            try {
+                const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                const total = cart.reduce((s, i) => s + (i.qty || 1), 0);
+                const badge = document.getElementById('cartBadge');
+                if (total > 0) { badge.textContent = total; badge.classList.remove('hidden'); }
+            } catch { }
+        }
+        updateCartBadge();
+
+        // Load products
+        async function loadProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = `<div class="col-span-2 md:col-span-4 text-center py-12 text-[#7F7F7F] text-sm">Carregando...</div>`;
+
+            const qs = new URLSearchParams();
+            if (currentFilter.category) qs.set('category', currentFilter.category);
+            if (currentFilter.search) qs.set('search', currentFilter.search);
+            if (currentFilter.order) qs.set('order', currentFilter.order);
+            qs.set('page', currentPage);
+            qs.set('limit', 12);
+
+            try {
+                const res = await fetch(`/api/products?${qs}`, { credentials: 'include' });
+                const data = await res.json();
+
+                document.getElementById('productCount').textContent =
+                    `${data.total || 0} produto${(data.total || 0) !== 1 ? 's' : ''} encontrado${(data.total || 0) !== 1 ? 's' : ''}`;
+
+                if (!data.products || data.products.length === 0) {
+                    grid.innerHTML = `<div class="col-span-2 md:col-span-4 text-center py-12 text-[#7F7F7F] text-sm">
+                    Nenhum produto encontrado para esta busca.
+                </div>`;
+                    document.getElementById('pagination').innerHTML = '';
+                    return;
+                }
+
+                grid.innerHTML = data.products.map(p => `
+                <div class="bg-white border border-[#D9D9D9] rounded-xl overflow-hidden hover:shadow-md transition-shadow group">
+                    <a href="/product.html?id=${p.id}" class="block">
+                        <div class="aspect-square overflow-hidden bg-[#F9F9F9]">
+                            <img src="${p.image_url || '/assets/images/products/camiseta-css.png'}"
+                                alt="${p.name}"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                        </div>
+                        <div class="p-4">
+                            ${p.old_price ? `<span class="text-xs text-white bg-[#1D4FFE] px-2 py-0.5 rounded font-medium">Oferta</span>` : ''}
+                            <p class="text-sm font-semibold text-[#1a1a1a] mt-1 line-clamp-2">${p.name}</p>
+                            ${p.old_price ? `<p class="text-xs text-[#7F7F7F] line-through">R$ ${Number(p.old_price).toFixed(2).replace('.', ',')}</p>` : ''}
+                            <p class="text-base font-bold text-[#1a1a1a]">R$ ${Number(p.price).toFixed(2).replace('.', ',')}</p>
+                            <p class="text-xs text-[#7F7F7F] mt-0.5">Pagamento via PIX</p>
+                        </div>
+                    </a>
+                    <div class="px-4 pb-4">
+                        <button onclick="addToCart('${p.id}','${p.name.replace(/'/g, "\\'")}',${p.price},'${p.image_url || ''}')"
+                            class="w-full bg-[#1D4FFE] text-white text-sm font-semibold py-2 rounded hover:bg-blue-700 transition-colors">
+                            Adicionar ao carrinho
+                        </button>
+                    </div>
+                </div>`).join('');
+
+                // Paginação
+                renderPagination(data.page, data.totalPages);
+
+            } catch (err) {
+                grid.innerHTML = `<div class="col-span-2 md:col-span-4 text-center py-12 text-red-500 text-sm">Erro ao carregar produtos.</div>`;
+            }
+        }
+
+        function renderPagination(page, total) {
+            const cont = document.getElementById('pagination');
+            if (total <= 1) { cont.innerHTML = ''; return; }
+            let html = '';
+            for (let i = 1; i <= total; i++) {
+                html += `<button onclick="goPage(${i})"
+                class="w-9 h-9 rounded border text-sm font-medium transition-colors
+                ${i === page ? 'bg-[#1D4FFE] text-white border-[#1D4FFE]' : 'bg-white text-[#1a1a1a] border-[#D9D9D9] hover:border-[#1D4FFE]'}">${i}</button>`;
+            }
+            cont.innerHTML = html;
+        }
+
+        function goPage(n) { currentPage = n; loadProducts(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        function addToCart(id, name, price, image) {
+            try {
+                const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                const idx = cart.findIndex(i => i.id === id);
+                if (idx >= 0) cart[idx].qty = (cart[idx].qty || 1) + 1;
+                else cart.push({ id, name, price, image, qty: 1 });
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartBadge();
+                const t = document.createElement('div');
+                t.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#1a1a1a] text-white text-sm px-5 py-3 rounded-full shadow-lg z-50';
+                t.textContent = `${name} adicionado!`;
+                document.body.appendChild(t);
+                setTimeout(() => t.remove(), 2000);
+            } catch { }
+        }
+
+        loadProducts();
+    </script>
 </body>
 
 </html>
